@@ -17,7 +17,7 @@ const HeroSection = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex flex-col items-center gap-4 text-center">
+      <div className="flex flex-col items-center gap-4 text-center relative w-[1440px]">
         {/* Title */}
         <div className="flex flex-col items-center">
           <h1 className="text-6xl font-bold leading-tight md:text-8xl">Create</h1>
@@ -60,10 +60,9 @@ const HeroSection = () => {
             className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[60%]"
           />
         </div>
-      </div>
 
       {/* Bottom Texts */}
-      <div className="absolute bottom-10 left-10 max-w-sm text-left text-sm leading-relaxed md:text-base">
+      <div className="absolute left-10 top-1/2 -translate-y-[10%] max-w-xs text-left text-sm leading-relaxed md:text-[1.3rem] font-semibold">
         <p>
           Welcome to create8
           <br />
@@ -71,12 +70,13 @@ const HeroSection = () => {
         </p>
       </div>
 
-      <div className="absolute bottom-10 right-10 max-w-md text-right text-sm leading-relaxed md:text-base">
+      <div className="absolute right-10 top-1/2 -translate-y-[10%] max-w-sm text-left text-sm leading-relaxed md:text-[1.3rem]">
         <p>
           Our mission is to enhance your online presence, your brand story, and
           elevate your visibility. We accomplish this by prioritizing quality
           content generation, multichannel formats, scalability and speed.
         </p>
+      </div>
       </div>
     </section>
   );
