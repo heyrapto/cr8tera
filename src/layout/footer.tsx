@@ -53,9 +53,9 @@ const Footer = () => {
   return (
     <footer className="flex flex-col px-[150px] relative">
         <div className="flex justify-between">
-            <ul className="grid grid-cols-3 gap-y-3 gap-x-2">
+            <ul className="grid grid-cols-3 gap-y-3 gap-x-6">
                 {footerLinks.map((l, i) => (
-                    <li className="inline-flex items-center gap-2">
+                    <li className="inline-flex items-center gap-2" key={i}>
                         <Icons.WhiteButtonEllipse width="5px" />
                         <Link href={l.href} className="text-lg">{l.title}</Link>
                     </li>
@@ -71,11 +71,11 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <input type="text" placeholder="Enter Email" className="outline-none border-b border-dotted border-white" />
+                <input type="text" placeholder="Enter Email" className="outline-none border-b border-dotted border-white pb-2" />
             </div>
         </div>
 
-        <h1 className="w-full text-[20vw] text-center">Cr8tera</h1>
+        <h1 className="w-full text-[20vw] text-center text-transparent bg-clip-text bg-[#71C3FD]">Cr8tera</h1>
 
         <Image 
         src="./images/backgrounds/footer-grad.svg"
