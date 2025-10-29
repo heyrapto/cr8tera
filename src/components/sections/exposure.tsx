@@ -29,7 +29,7 @@ const ExposureSection = () => {
         },
     ]
     return (
-        <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+        <section className="relative h-screen flex flex-col items-center justify-center text-center py-[100px]">
         <div className="absolute inset-0 -z-10">
             <Image
                 src="/images/backgrounds/exposure.svg"
@@ -40,10 +40,10 @@ const ExposureSection = () => {
             />
         </div>
 
-        <div className="flex flex-col gap-10 items-start justify-start ">
+        <div className="flex flex-col gap-10 items-start justify-start w-full px-[150px] max-w-[1440px]">
             <span className="text-8xl">Get better exposure</span>
 
-            <div className="flex gap-16 items-center">
+            <div className="flex gap-16 items-center justify-between w-full">
                 <Image
                 src="/images/exposure-design.svg"
                 alt="Exposure design"

@@ -51,7 +51,7 @@ const Footer = () => {
         },
     ]
   return (
-    <footer className="flex flex-col px-[150px] relative">
+    <footer className="flex flex-col px-[150px] relative py-[100px]">
         <div className="flex justify-between">
             <ul className="grid grid-cols-3 gap-y-3 gap-x-6">
                 {footerLinks.map((l, i) => (
