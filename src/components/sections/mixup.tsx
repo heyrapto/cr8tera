@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const MixUpSection = () => {
   return (
-    <section className="relative flex flex-col items-center justify-start text-center bg-white rounded-t-[60px] pt-64 pb-32 mt-48 overflow-hidden -z-10">
+    <section className="relative flex flex-col items-center justify-start text-start bg-white rounded-t-[60px] pt-64 pb-32 mt-48 overflow-hidden -z-10">
       {/* White background (seamless transition) */}
       <div className="absolute inset-0 bg-white z-0"></div>
 
@@ -29,7 +29,7 @@ const MixUpSection = () => {
         {/* Replace this Image with your actual Mix-up graphic */}
         <div className="relative w-full max-w-lg aspect-square">
           <Image
-            src="/images/mix-up.svg" // placeholder
+            src="/images/mix-up.svg" 
             alt="Mix it up graphic"
             fill
             className="object-contain"

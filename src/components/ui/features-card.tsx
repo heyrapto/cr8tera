@@ -26,7 +26,7 @@ export const FeaturesCard: React.FC<FeaturedCardProps> = ({
 }) => {
   return (
     <div
-      className="flex flex-col justify-between h-[350px] min-w-[350px] max-w-[690px] border border-white backdrop-blur-md relative overflow-hidden rounded-2xl items-start text-start p-[20px]"
+      className="flex flex-col justify-between h-[350px] min-w-[350px] max-w-[690px] border border-white/50 backdrop-blur-md relative overflow-hidden rounded-2xl items-start text-start p-[20px]"
       style={{ width: size.width, ...style }}
     >
       {/* Background */}
@@ -43,13 +43,13 @@ export const FeaturesCard: React.FC<FeaturedCardProps> = ({
       {/* Tagline */}
       <div className="relative z-10">
         {tagline.isSlanted ? (
-          <h3 className="text-3xl font-light mb-2 italic">
-            <span className="text-cyan-400">{tagline.value.primaryTagline}</span>{" "}
-            <span className="text-white">{tagline.value.secondaryTagline}</span>
+          <h3 className="font-light mb-2 flex gap-4">
+            <span className="text-cyan-400 text-3xl">{tagline.value.primaryTagline}</span>{" "}
+            <span className="text-white text-[1rem] w-[300px]">{tagline.value.secondaryTagline}</span>
           </h3>
         ) : (
-          <h3 className="text-3xl font-light mb-2">
-            <span className="text-cyan-400">{tagline.value.primaryTagline}</span>{" "}
+          <h3 className="font-light mb-2  flex gap-4 items-center">
+            <span className="text-cyan-400 text-3xl">{tagline.value.primaryTagline}</span>{" "}
             <span className="text-white">{tagline.value.secondaryTagline}</span>
           </h3>
         )}
