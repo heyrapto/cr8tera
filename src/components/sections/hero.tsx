@@ -4,17 +4,16 @@ import { Icons } from "../ui/icons";
 
 const HeroSection = () => {
     return (
-        <section className="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-black text-white">
-            {/* Background */}
-            <div className="absolute inset-0 -z-10">
-                <Image
-                    src="/images/heroBg.svg"
-                    alt="Hero background"
-                    fill
-                    priority
-                    className="object-cover object-center opacity-100"
-                />
-            </div>
+        <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
+        <div className="absolute inset-0 -z-10">
+            <Image
+                src="/images/heroBg.svg"
+                alt="Hero background"
+                fill
+                priority
+                className="object-cover object-center opacity-100"
+            />
+        </div>
 
             {/* Main Content */}
             <div className="flex flex-col items-center gap-4 text-center relative max-w-[1440px] w-full">

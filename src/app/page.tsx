@@ -6,10 +6,11 @@ import TestimonialsSection from "@/components/sections/testimonials";
 import WhyChooseUsSection from "@/components/sections/whychooseus";
 import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
+import ReactLenis from "lenis/react";
 
 export default function Home() {
   return (
-   <main>
+   <ReactLenis root>
     <Navbar />
     <HeroSection />
     <CTASection />
@@ -18,6 +19,6 @@ export default function Home() {
     <ExposureSection />
     <TestimonialsSection />
     <Footer />
-   </main>
+   </ReactLenis>
   );
 }
