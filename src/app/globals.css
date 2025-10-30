@@ -35,3 +35,7 @@
     font-family: var(--font-radley), serif;
   }
 }
+
+.text-outline {
+  paint-order: stroke fill;
+}

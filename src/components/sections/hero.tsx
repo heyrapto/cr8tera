@@ -5,15 +5,15 @@ import { Icons } from "../ui/icons";
 const HeroSection = () => {
     return (
         <section className="relative min-h-screen flex flex-col items-center justify-center text-center">
-        <div className="absolute inset-0 -z-10">
-            <Image
-                src="/images/heroBg.svg"
-                alt="Hero background"
-                fill
-                priority
-                className="object-cover object-center opacity-100"
-            />
-        </div>
+            <div className="absolute inset-0 -z-10">
+                <Image
+                    src="/images/heroBg.svg"
+                    alt="Hero background"
+                    fill
+                    priority
+                    className="object-cover object-center opacity-100"
+                />
+            </div>
 
             {/* Main Content */}
             <div className="flex flex-col items-center gap-4 text-center relative max-w-[1440px] w-full">
@@ -21,14 +21,45 @@ const HeroSection = () => {
                 <div className="flex flex-col items-center">
                     <h1 className="text-6xl font-bold leading-tight md:text-8xl">Create</h1>
                     <p className="text-lg md:text-xl mt-1">your</p>
-                    <div className="relative mt-2">
-                        {/* Background behind “story” */}
+                    <div className="relative mt-2 w-[500px] h-[120px] md:w-[600px] md:h-[160px] rounded-lg border border-white/50">
+                        {/* Background Image */}
                         <Image
-                            src="/images/backgrounds/story-bg.svg"
+                            src="/images/story-bg.png"
                             alt="Story background"
-                            width={500}
-                            height={120}
-                            className="inset-0 rounded-lg object-cover"
+                            fill
+                            className="object-cover rounded-lg -z-10"
+                        />
+
+                        <h1 className="absolute top-0 left-0 bottom-0 right-0 mx-auto text-[96px]">Story</h1>
+
+                        {/* Corner Decorations */}
+                        <Image
+                            src="/images/rectangle.svg"
+                            alt="corner"
+                            width={12}
+                            height={12}
+                            className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
+                        />
+                        <Image
+                            src="/images/rectangle.svg"
+                            alt="corner"
+                            width={12}
+                            height={12}
+                            className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
+                        />
+                        <Image
+                            src="/images/rectangle.svg"
+                            alt="corner"
+                            width={12}
+                            height={12}
+                            className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 rotate-180"
+                        />
+                        <Image
+                            src="/images/rectangle.svg"
+                            alt="corner"
+                            width={12}
+                            height={12}
+                            className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 rotate-180"
                         />
                     </div>
                 </div>
@@ -36,7 +67,7 @@ const HeroSection = () => {
                 {/* Try Demo Button */}
                 <div className="mt-6 relative p-2 rounded-[20px] bg-linear-to-r from-[#1B408F] to-[#70FDFD] font-semibold text-white shadow-lg hover:opacity-90 ">
                     <Button
-                    icon={Icons.WhiteButtonEllipse}
+                        icon={Icons.WhiteButtonEllipse}
                         className="relative px-8 py-2 rounded-[15px] bg-linear-to-r from-[#5B7DCF] to-[#D2E5F5] font-semibold text-white shadow-lg hover:opacity-90"
                     >
                         Try Demo

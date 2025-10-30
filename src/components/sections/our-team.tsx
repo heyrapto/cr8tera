@@ -55,7 +55,7 @@ export default function OurTeamSection() {
             </div>
 
             {/* Bottom overlay */}
-            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full bg-black/70 rounded-xl py-3 px-5 text-white text-sm font-medium z-20">
+            <div className={`absolute bottom-0 left-1/2 -translate-x-1/2 ${member.svg ? "w-[90%]" : "w-full"} bg-black/70 rounded-xl py-3 px-5 text-white text-sm font-medium z-20`}>
               {member.title}
             </div>
           </div>
