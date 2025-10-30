@@ -15,7 +15,7 @@ const WhyChooseUsSection = () => {
   ];
 
   return (
-    <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-white overflow-hidden">
+    <section className="relative min-h-screen w-full flex flex-col items-center justify-center text-white overflow-hidden px-[150px]">
       {/* Background */}
       <div className="absolute inset-0 -z-10">
         <Image
@@ -28,22 +28,24 @@ const WhyChooseUsSection = () => {
       </div>
 
       {/* Top title */}
-      <div className="relative flex flex-col items-center">
+      <div className="relative flex flex-col w-full items-center text-left">
         <Image
           src="/images/whychoose.svg"
           alt="Why Choose Us"
           width={500}
           height={500}
-          className="mb-8"
+          className="mb-8 "
         />
+
+        <h1 className="text-6xl">Why Use <br /> cre8tera?</h1>
       </div>
 
       {/* Cards section */}
-      <div className="relative flex flex-col md:flex-row items-center justify-center gap-12 mt-4">
+      <div className="relative flex flex-col md:flex-row items-center justify-center gap-12 mt-4 w-full">
         {chooseData.map((item) => (
           <div
             key={item.id}
-            className="relative bg-[#FFFFFF1C]/200 border-[#1B408F]/50 rounded-2xl p-10 w-[800px] text-start shadow-[0_0_30px_rgba(27,64,143,0.4)] backdrop-blur-md"
+            className="relative bg-[#FFFFFF1C]/200 border-[#1B408F]/50 rounded-2xl p-10 w-full text-start shadow-[0_0_30px_rgba(27,64,143,0.4)] backdrop-blur-md"
           >
             {/* 4 corner rectangles */}
             <Image
