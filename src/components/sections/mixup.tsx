@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const MixUpSection = () => {
   return (
-    <section className="relative flex flex-col items-center justify-start text-start bg-white rounded-t-[60px] pt-64 pb-32 mt-48 overflow-hidden -z-10">
+    <section className="relative flex flex-col items-center justify-start text-start bg-white rounded-t-[60px] pt-[300px] pb-32 mt-48 overflow-hidden -z-10">
       {/* White background (seamless transition) */}
       <div className="absolute inset-0 bg-white z-0"></div>
 

@@ -10,7 +10,7 @@ const teamData = [
 
 export default function OurTeamSection() {
   return (
-    <section className="relative min-h-fit flex flex-col items-center justify-center py-28 text-center bg-transparent">
+    <section className="relative min-h-fit flex flex-col items-center justify-center py-28 text-center bg-transparent  -mb-[190px]">
       {/* background glow */}
       <div className="absolute inset-0 -z-10">
         <Image
