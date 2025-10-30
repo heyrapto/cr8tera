@@ -19,10 +19,15 @@ const WhyChooseUsSection = () => {
     },
   ];
 
-  // intersection + animation controls
+  // Animation controllers
   const controls = useAnimation();
   const logoControls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
+
+  // Trigger only when fully visible
+  const [ref, inView] = useInView({
+    threshold: 1, // 👈 must be fully in view
+    triggerOnce: true,
+  });
 
   useEffect(() => {
     if (inView) {
@@ -31,27 +36,29 @@ const WhyChooseUsSection = () => {
     }
   }, [inView, controls, logoControls]);
 
+  // Card animation
   const cardVariants: any = {
     hidden: { scaleX: 0.7, opacity: 0 },
     visible: (i: number) => ({
       scaleX: 1,
       opacity: 1,
       transition: {
-        duration: 1.2,
-        delay: 0.25 * i,
+        duration: i === 0 ? 1.3 : 0.9,
+        delay: i * 0.3,
         ease: [0.25, 1, 0.3, 1],
       },
     }),
   };
 
+  // Rotating logo
   const logoVariants: any = {
-    hidden: { rotateX: 0 },
+    hidden: { rotateY: 0 },
     visible: {
       rotateY: [0, 360],
       transition: {
         duration: 12,
         ease: "linear",
-        repeat: Infinity, 
+        repeat: Infinity,
       },
     },
   };
@@ -131,7 +138,9 @@ const WhyChooseUsSection = () => {
             ))}
 
             <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-base text-gray-300 leading-relaxed">{item.text}</p>
+            <p className="text-base text-gray-300 leading-relaxed">
+              {item.text}
+            </p>
           </motion.div>
         ))}
       </div>

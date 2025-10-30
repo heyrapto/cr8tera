@@ -86,12 +86,12 @@ const MixUpSection = () => {
 
       {/* Graphic Area */}
       <motion.div
-        className="relative z-10 mt-24 flex flex-col items-center justify-center w-full max-w-4xl px-4"
+        className="relative z-10 mt-24 flex flex-col items-center justify-center w-full max-w-[700px] px-4"
         variants={fadeUp(1.1)}
         initial="hidden"
         animate={controls}
       >
-        <div className="relative w-full max-w-lg aspect-square">
+        <div className="relative w-full aspect-square">
           <Image src="/images/mix-up.png" alt="Mix it up graphic" fill className="object-contain" />
         </div>
       </motion.div>

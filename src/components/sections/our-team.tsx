@@ -14,14 +14,13 @@ const teamData = [
 export default function OurTeamSection() {
   const controls = useAnimation();
   const [ref, inView] = useInView({
-    threshold: 0.4, // triggers when 40% visible
+    threshold: 0.4,
+    triggerOnce: true, // ✅ only trigger once
   });
 
   useEffect(() => {
     if (inView) {
-      controls.start("visible"); // play animation when in view
-    } else {
-      controls.start("hidden"); // reset when out of view (so it replays next time)
+      controls.start("visible");
     }
   }, [controls, inView]);
 
