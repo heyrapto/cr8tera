@@ -2,6 +2,7 @@ import CTASection from "@/components/sections/cta";
 import ExposureSection from "@/components/sections/exposure";
 import FeaturesSection from "@/components/sections/features";
 import HeroSection from "@/components/sections/hero";
+import MixUpSection from "@/components/sections/mixup";
 import OurTeamSection from "@/components/sections/our-team";
 import SummarySection from "@/components/sections/summary";
 import TestimonialsSection from "@/components/sections/testimonials";
@@ -18,6 +19,7 @@ export default function Home() {
     <CTASection />
     <FeaturesSection />
     <OurTeamSection />
+    <MixUpSection />
     <WhyChooseUsSection />
     <SummarySection />
     <ExposureSection />
