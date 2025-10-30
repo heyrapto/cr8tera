@@ -67,7 +67,7 @@ const Footer = () => {
                     <h4 className="text-[2rem] font-semibold">Email</h4>
 
                     <div className="inline-flex">
-                    <Button variant="primary" radius="md" icon={Icons.BlueButtonEllipse}>Menu</Button>
+                    <Button variant="primary" radius="md" icon={Icons.BlueButtonEllipse}>Try Demo</Button>
                     </div>
                 </div>
 
