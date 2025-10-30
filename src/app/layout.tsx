@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Aclonica } from "next/font/google";
+import { Aclonica, Radley } from "next/font/google";
 import "./globals.css";
 
 const aclonica = Aclonica({
   weight: "400",
   subsets: ["latin"],
   variable: "--font-aclonica",
+});
+
+const radley = Radley({
+  weight: ["400"],
+  subsets: ["latin"],
+  variable: "--font-radley",
 });
 
 export const metadata: Metadata = {
@@ -20,7 +26,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         style={{ "--font-satoshi": "Satoshi" } as React.CSSProperties}
-        className={`${aclonica.variable} antialiased`}
+        className={`${aclonica.variable} ${radley.variable} antialiased`}
       >
         {children}
       </body>

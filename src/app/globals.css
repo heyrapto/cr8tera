@@ -30,4 +30,8 @@
   h1, h2, h3 {
     font-family: var(--font-aclonica), sans-serif;
   }
+  
+  .font-radley {
+    font-family: var(--font-radley), serif;
+  }
 }

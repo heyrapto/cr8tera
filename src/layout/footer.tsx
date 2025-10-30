@@ -75,7 +75,7 @@ const Footer = () => {
             </div>
         </div>
 
-        <h1 className="w-full text-[20vw] text-center text-transparent bg-clip-text bg-[#71C3FD]">Cr8tera</h1>
+        <h1 className="w-full text-[25vw] text-center text-transparent bg-clip-text bg-[#71C3FD] font-radley">Cr8tera</h1>
 
         <Image 
         src="./images/backgrounds/footer-grad.svg"
