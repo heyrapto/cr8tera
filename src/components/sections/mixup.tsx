@@ -25,16 +25,24 @@ const MixUpSection = () => {
       </div>
 
       {/* Graphic Area */}
-      <div className="relative z-10 mt-24 flex items-center justify-center w-full max-w-4xl px-4">
+      <div className="relative z-10 mt-24 flex flex-col items-center justify-center w-full max-w-4xl px-4">
         {/* Replace this Image with your actual Mix-up graphic */}
         <div className="relative w-full max-w-lg aspect-square">
           <Image
-            src="/images/mix-up.svg" 
+            src="/images/mix-up.png" 
             alt="Mix it up graphic"
             fill
             className="object-contain"
           />
         </div>
+
+        <Image
+            src="/images/mixup-ruler.svg" 
+            alt="Mix it up ruler"
+            width={200}
+            height={200}
+            className="object-contain"
+          />
       </div>
     </section>
   );
