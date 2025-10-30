@@ -9,17 +9,47 @@ import { Icons } from "../ui/icons";
 
 const CTASection = () => {
   const controls = useAnimation();
+  const buttonControls = useAnimation(); // separate for sequential timing
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
 
   useEffect(() => {
-    if (inView) controls.start("visible");
-  }, [controls, inView]);
+    if (inView) {
+      // Step 1: Play text scatter animation
+      controls.start("visible").then(() => {
+        // Step 2: Trigger button animation after text completes
+        buttonControls.start("visible");
+      });
+    }
+  }, [controls, buttonControls, inView]);
+
+  const scatterText = "Creating new worlds, an AI workflow at a time.";
+
+  // scatter-in text animation
+  const scatterVariants: any = {
+    hidden: (i: number) => ({
+      opacity: 0,
+      x: Math.random() * 400 - 200,
+      y: Math.random() * 200 - 100,
+      rotate: Math.random() * 180 - 90,
+    }),
+    visible: (i: number) => ({
+      opacity: 1,
+      x: 0,
+      y: 0,
+      rotate: 0,
+      transition: {
+        delay: i * 0.02,
+        duration: 0.8,
+        ease: "easeOut",
+      },
+    }),
+  };
 
   const buttonVariants: any = {
     hidden: {
-      width: 56, // roughly icon width
-      scale: 0.9,
+      width: 56,
       opacity: 0,
+      scale: 0.9,
     },
     visible: {
       width: 220,
@@ -57,38 +87,50 @@ const CTASection = () => {
 
       {/* Content */}
       <div ref={ref} className="flex flex-col gap-16 items-center">
-        <span className="text-5xl md:text-8xl w-full md:w-[1200px] leading-tight">
-          Creating new worlds, an AI workflow at a time.
-        </span>
+        {/* Scatter text */}
+        <motion.span
+          className="text-5xl md:text-8xl w-full md:w-[1200px] leading-tight font-semibold flex flex-wrap justify-center"
+          initial="hidden"
+          animate={controls}
+        >
+          {scatterText.split("").map((char, i) => (
+            <motion.span
+              key={i}
+              custom={i}
+              variants={scatterVariants}
+              style={{ display: "inline-block", whiteSpace: "pre" }}
+            >
+              {char}
+            </motion.span>
+          ))}
+        </motion.span>
 
+        {/* Button and Ruler */}
         <div className="flex flex-col gap-12 items-center">
-          {/* Animated Button */}
           <motion.div
             className="overflow-hidden flex items-center justify-center"
             variants={buttonVariants}
             initial="hidden"
-            animate={controls}
+            animate={buttonControls}
             style={{
-              borderRadius: "9999px", // fully rounded
+              borderRadius: "9999px",
             }}
           >
             <Button
               variant="primary"
               radius="full"
               icon={Icons.BlueButtonEllipse}
-              
               style={{
                 whiteSpace: "nowrap",
                 overflow: "hidden",
               }}
             >
-              <motion.span variants={textVariants} initial="hidden" animate={controls}>
+              <motion.span variants={textVariants} initial="hidden" animate={buttonControls}>
                 Try Demo
               </motion.span>
             </Button>
           </motion.div>
 
-          {/* Decorative ruler */}
           <Image
             src="/images/ctaRuler.svg"
             alt="Ruler"

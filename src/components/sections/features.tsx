@@ -20,46 +20,44 @@ const FeaturesSection = () => {
     if (!sectionRef.current) return;
 
     const ctx = gsap.context(() => {
-      // initial states
-      gsap.set([leftTopRef.current, rightTopRef.current], {
-        opacity: 1,
-        yPercent: 0,
-      });
-      gsap.set([leftBottomRef.current, rightBottomRef.current], {
-        opacity: 0,
-        yPercent: 100,
-      });
+      gsap.set([leftTopRef.current, rightTopRef.current], { yPercent: 0, zIndex: 2 });
+      gsap.set([leftBottomRef.current, rightBottomRef.current], { yPercent: 100, zIndex: 1, opacity: 0 });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=2000", // controls scroll length
-          scrub: 1,
+          end: "+=1500",
+          scrub: 0.8,
           pin: true,
           anticipatePin: 1,
         },
       });
 
-      // top pair move up & fade out
-      tl.to([leftTopRef.current, rightTopRef.current], {
-        yPercent: -100,
-        opacity: 0,
-        ease: "power2.out",
-        duration: 1,
-      });
+      // Animate top cards out (up) and new ones in (from below)
+      tl.to(
+        [leftTopRef.current, rightTopRef.current],
+        {
+          yPercent: -100,
+          ease: "power2.inOut",
+          duration: 1,
+        },
+        0
+      );
 
-      // bottom pair move up & fade in
       tl.to(
         [leftBottomRef.current, rightBottomRef.current],
         {
           yPercent: 0,
           opacity: 1,
-          ease: "power2.out",
+          ease: "power2.inOut",
           duration: 1,
         },
-        "<" // overlap
+        0
       );
+
+      // Hide the top ones once fully moved out to prevent ghost overlap
+      tl.set([leftTopRef.current, rightTopRef.current], { opacity: 0 });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -68,46 +66,42 @@ const FeaturesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
     >
-      {/* Static Background */}
+      {/* Background stays static */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/backgrounds/features-bg.svg"
           alt="Features background"
           fill
           priority
-          className="object-cover object-center opacity-100"
+          className="object-cover object-center"
         />
       </div>
 
-      {/* Floating cards area */}
-      <div className="relative flex justify-between items-center w-full max-w-[1400px] px-[150px]">
+      {/* Tag */}
+      <div className="absolute top-[100px] left-[150px] z-10">
+        <div className="flex items-center gap-2 bg-[#0A0F1E]/80 border border-[#1E2E5C] px-4 py-2 rounded-full text-sm uppercase tracking-wide">
+          <div className="w-2 h-2 bg-white rounded-full" />
+          <span>Creative Platform</span>
+        </div>
+      </div>
+
+      {/* Cards container */}
+      <div className="relative w-full max-w-[1400px] h-full px-[150px]">
         {/* Left cards */}
-        <div
-          ref={leftTopRef}
-          className="absolute left-0 top-1/2 -translate-y-1/2"
-        >
+        <div ref={leftTopRef} className="absolute left-0 top-1/2 -translate-y-1/2">
           <FeaturesCard {...featuresData[0]} />
         </div>
-        <div
-          ref={leftBottomRef}
-          className="absolute left-0 top-1/2 -translate-y-1/2"
-        >
+        <div ref={leftBottomRef} className="absolute left-0 top-1/2 -translate-y-1/2">
           <FeaturesCard {...featuresData[2]} />
         </div>
 
         {/* Right cards */}
-        <div
-          ref={rightTopRef}
-          className="absolute right-0 top-1/2 -translate-y-1/2"
-        >
+        <div ref={rightTopRef} className="absolute right-0 top-1/2 -translate-y-1/2">
           <FeaturesCard {...featuresData[1]} />
         </div>
-        <div
-          ref={rightBottomRef}
-          className="absolute right-0 top-1/2 -translate-y-1/2"
-        >
+        <div ref={rightBottomRef} className="absolute right-0 top-1/2 -translate-y-1/2">
           <FeaturesCard {...featuresData[3]} />
         </div>
       </div>
