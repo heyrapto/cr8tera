@@ -94,14 +94,6 @@ const MixUpSection = () => {
         <div className="relative w-full max-w-lg aspect-square">
           <Image src="/images/mix-up.png" alt="Mix it up graphic" fill className="object-contain" />
         </div>
-
-        <Image
-          src="/images/mixup-ruler.svg"
-          alt="Mix it up ruler"
-          width={200}
-          height={200}
-          className="object-contain"
-        />
       </motion.div>
     </section>
   );

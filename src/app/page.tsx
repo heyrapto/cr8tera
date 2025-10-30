@@ -9,6 +9,7 @@ import TestimonialsSection from "@/components/sections/testimonials";
 import WhyChooseUsSection from "@/components/sections/whychooseus";
 import Footer from "@/layout/footer";
 import Navbar from "@/layout/navbar";
+import { Ruler } from "@/layout/ruler";
 import ReactLenis from "lenis/react";
 
 export default function Home() {
@@ -25,6 +26,7 @@ export default function Home() {
     <ExposureSection />
     <TestimonialsSection />
     <Footer />
+    <Ruler /> 
    </ReactLenis>
   );
 }

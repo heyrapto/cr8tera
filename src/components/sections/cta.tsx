@@ -105,7 +105,7 @@ const CTASection = () => {
           ))}
         </motion.span>
 
-        {/* Button and Ruler */}
+        {/* Button */}
         <div className="flex flex-col gap-12 items-center">
           <motion.div
             className="overflow-hidden flex items-center justify-center"
@@ -130,14 +130,6 @@ const CTASection = () => {
               </motion.span>
             </Button>
           </motion.div>
-
-          <Image
-            src="/images/ctaRuler.svg"
-            alt="Ruler"
-            width={300}
-            height={60}
-            className="mx-auto"
-          />
         </div>
       </div>
     </section>

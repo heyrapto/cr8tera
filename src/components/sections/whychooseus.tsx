@@ -135,16 +135,6 @@ const WhyChooseUsSection = () => {
           </motion.div>
         ))}
       </div>
-
-      {/* Bottom ruler */}
-      <div className="mt-12 flex justify-center">
-        <Image
-          src="/images/whychooseRuler.svg"
-          alt="Ruler"
-          width={250}
-          height={100}
-        />
-      </div>
     </section>
   );
 };
