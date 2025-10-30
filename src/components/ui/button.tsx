@@ -1,3 +1,4 @@
+import { style } from "framer-motion/client";
 import React from "react";
 import { IconType } from "react-icons";
 
@@ -7,15 +8,16 @@ interface ButtonProps {
     radius?: "full" | "md";
     icon?: IconType;
     className?: string;
+    style?: React.CSSProperties;
 }
 
-export const Button:React.FC<ButtonProps> = ({ children, variant, radius, icon, className }) => {
+export const Button:React.FC<ButtonProps> = ({ children, variant, radius, icon, className, style }) => {
     const baseStyles = "inline-flex items-center justify-center gap-2 px-4 py-3 cursor-pointer max-w-[300px]";
     const variantStyles = variant === "primary" ? "bg-primary text-white" : variant === "secondary" ? "bg-secondary text-white" : variant === "ghost" ? "bg-transparent text-white" : "";
     const radiusStyles = radius === "full" ? "border border-[#FFFFFF] rounded-full" : radius === "md" ? "border border-[#FFFFFF] rounded-[18px]" : "border-none";
 
     return (
-        <button className={`${baseStyles} ${variantStyles} ${radiusStyles} ${className}`}>
+        <button className={`${baseStyles} ${variantStyles} ${radiusStyles} ${className}`} style={style}>
             <span className="">{icon && React.createElement(icon)}</span>
             {children}
         </button>
