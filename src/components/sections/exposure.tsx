@@ -53,7 +53,7 @@ const ExposureSection = () => {
 
                 <div className="flex flex-col gap-4">
                     {exposureItems.map((e, i) => (
-                        <div className="flex justify-between items-center border border-white w-[600px] rounded-[25px] p-5">
+                        <div className="flex justify-between items-center border border-white w-[600px] rounded-[25px] p-5" key={i}>
                             <div className="flex gap-3 items-center">
                                 <Image src={e.image} alt={e.title} width={50} height={50} />
                                 <span>{e.title}</span>

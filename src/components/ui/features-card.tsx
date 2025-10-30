@@ -1,0 +1,65 @@
+import Image from "next/image";
+import React from "react";
+
+interface FeaturedCardProps {
+  tagline: {
+    value: {
+      primaryTagline: string;
+      secondaryTagline: string;
+    };
+    isSlanted: boolean;
+  };
+  title: string;
+  desc: string;
+  style?: React.CSSProperties;
+  size: {
+    width: string;
+  };
+}
+
+export const FeaturesCard: React.FC<FeaturedCardProps> = ({
+  tagline,
+  title,
+  desc,
+  style,
+  size,
+}) => {
+  return (
+    <div
+      className="flex flex-col justify-between h-[350px] min-w-[350px] max-w-[690px] border border-white backdrop-blur-md relative overflow-hidden rounded-2xl items-start text-start p-[20px]"
+      style={{ width: size.width, ...style }}
+    >
+      {/* Background */}
+      <div className="absolute inset-0 -z-10">
+        <Image
+          src="/images/backgrounds/feature-card-bg.svg"
+          alt="Card background"
+          fill
+          priority
+          className="object-cover object-center opacity-100"
+        />
+      </div>
+
+      {/* Tagline */}
+      <div className="relative z-10">
+        {tagline.isSlanted ? (
+          <h3 className="text-3xl font-light mb-2 italic">
+            <span className="text-cyan-400">{tagline.value.primaryTagline}</span>{" "}
+            <span className="text-white">{tagline.value.secondaryTagline}</span>
+          </h3>
+        ) : (
+          <h3 className="text-3xl font-light mb-2">
+            <span className="text-cyan-400">{tagline.value.primaryTagline}</span>{" "}
+            <span className="text-white">{tagline.value.secondaryTagline}</span>
+          </h3>
+        )}
+      </div>
+
+      {/* Title + Description */}
+      <div className="relative z-10 max-w-[300px]">
+        <h4 className="text-xl font-semibold text-white mb-3">{title}</h4>
+        <p className="text-gray-300 text-sm leading-relaxed">{desc}</p>
+      </div>
+    </div>
+  );
+};
