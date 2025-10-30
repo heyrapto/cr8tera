@@ -21,7 +21,7 @@ const HeroSection = () => {
                 <div className="flex flex-col items-center">
                     <h1 className="text-6xl font-bold leading-tight md:text-8xl">Create</h1>
                     <p className="text-lg md:text-xl mt-1">your</p>
-                    <div className="relative mt-2 w-[500px] h-[120px] md:w-[600px] md:h-[160px] rounded-lg border border-white/50">
+                    <div className="relative mt-2 w-[500px] h-[120px] md:w-[600px] md:h-[160px] rounded-lg border border-white/50 flex items-center justify-center text-center">
                         {/* Background Image */}
                         <Image
                             src="/images/story-bg.png"
@@ -30,7 +30,8 @@ const HeroSection = () => {
                             className="object-cover rounded-lg -z-10"
                         />
 
-                        <h1 className="absolute top-0 left-0 bottom-0 right-0 mx-auto text-[96px]">Story</h1>
+                        {/* Centered Text */}
+                        <h1 className="text-[96px] font-bold text-white z-10">Story</h1>
 
                         {/* Corner Decorations */}
                         <Image
@@ -62,6 +63,7 @@ const HeroSection = () => {
                             className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 rotate-180"
                         />
                     </div>
+
                 </div>
 
                 {/* Try Demo Button */}
