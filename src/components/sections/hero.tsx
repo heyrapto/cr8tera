@@ -20,7 +20,7 @@ const HeroSection = () => {
                 {/* Title */}
                 <div className="flex flex-col items-center">
                     <h1 className="text-6xl font-bold leading-tight md:text-8xl">Create</h1>
-                    <p className="text-lg md:text-xl mt-1">your</p>
+                    <span className="text-lg md:text-4xl mb-2">your</span>
                     <div className="relative mt-2 w-[500px] h-[120px] md:w-[600px] md:h-[160px] rounded-lg border border-white/50 flex items-center justify-center text-center">
                         {/* Background Image */}
                         <Image
