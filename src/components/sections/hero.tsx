@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Button } from "../ui/button";
 import { Icons } from "../ui/icons";
+import { AnimatedCard } from "../animations/animated-card-text";
 
 const HeroSection = () => {
     return (
@@ -21,49 +22,8 @@ const HeroSection = () => {
                 <div className="flex flex-col items-center">
                     <h1 className="text-6xl font-bold leading-tight md:text-8xl">Create</h1>
                     <span className="text-lg md:text-4xl mb-2">your</span>
-                    <div className="relative mt-2 w-[500px] h-[120px] md:w-[600px] md:h-[160px] rounded-lg border border-white/50 flex items-center justify-center text-center">
-                        {/* Background Image */}
-                        <Image
-                            src="/images/story-bg.png"
-                            alt="Story background"
-                            fill
-                            className="object-cover rounded-lg -z-10"
-                        />
-
-                        {/* Centered Text */}
-                        <h1 className="text-[96px] font-bold text-white z-10">Story</h1>
-
-                        {/* Corner Decorations */}
-                        <Image
-                            src="/images/rectangle.svg"
-                            alt="corner"
-                            width={12}
-                            height={12}
-                            className="absolute top-0 left-0 -translate-x-1/2 -translate-y-1/2"
-                        />
-                        <Image
-                            src="/images/rectangle.svg"
-                            alt="corner"
-                            width={12}
-                            height={12}
-                            className="absolute top-0 right-0 translate-x-1/2 -translate-y-1/2"
-                        />
-                        <Image
-                            src="/images/rectangle.svg"
-                            alt="corner"
-                            width={12}
-                            height={12}
-                            className="absolute bottom-0 left-0 -translate-x-1/2 translate-y-1/2 rotate-180"
-                        />
-                        <Image
-                            src="/images/rectangle.svg"
-                            alt="corner"
-                            width={12}
-                            height={12}
-                            className="absolute bottom-0 right-0 translate-x-1/2 translate-y-1/2 rotate-180"
-                        />
-                    </div>
-
+                    {/* animated card */}
+                    <AnimatedCard />
                 </div>
 
                 {/* Try Demo Button */}
