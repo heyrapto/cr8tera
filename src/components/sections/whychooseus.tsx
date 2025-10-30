@@ -43,7 +43,7 @@ const WhyChooseUsSection = () => {
         {chooseData.map((item) => (
           <div
             key={item.id}
-            className="relative bg-linear-to-b from-[#102A61]/60 to-[#0B1635]/60 border border-[#1B408F]/50 rounded-2xl p-10 max-w-sm text-center shadow-[0_0_30px_rgba(27,64,143,0.4)] backdrop-blur-md"
+            className="relative bg-[#FFFFFF1C]/200 border-[#1B408F]/50 rounded-2xl p-10 w-[800px] text-start shadow-[0_0_30px_rgba(27,64,143,0.4)] backdrop-blur-md"
           >
             {/* 4 corner rectangles */}
             <Image
@@ -77,7 +77,7 @@ const WhyChooseUsSection = () => {
 
             {/* Text content */}
             <h3 className="text-2xl font-semibold mb-4">{item.title}</h3>
-            <p className="text-sm text-gray-300 leading-relaxed">{item.text}</p>
+            <p className="text-[24px] text-gray-300 leading-relaxed w-[400px]">{item.text}</p>
           </div>
         ))}
       </div>
