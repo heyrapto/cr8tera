@@ -35,7 +35,7 @@ const TestimonialsSection = () => {
         />
 
         {/* Testimonials */}
-        <div className="flex flex-col gap-10 w-full max-w-[1440px] mx-auto px-[120px] md:px-[180px]">
+        <div className="flex flex-col gap-10 w-full mx-auto px-[120px] md:px-[180px]">
           {testimonialsData.map((t, i) => (
             <div key={i} className="flex flex-col gap-4 items-start w-full">
               {/* Text */}

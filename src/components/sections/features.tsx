@@ -38,7 +38,7 @@ const FeaturesSection = () => {
     return (
         <section 
             ref={sectionRef}
-            className="relative min-h-screen flex flex-col items-center justify-start py-[100px] px-[150px] overflow-hidden"
+            className="relative min-h-screen flex flex-col items-center justify-start px-[150px] overflow-hidden"
         >
             <div className="absolute inset-0 -z-10">
                 <Image

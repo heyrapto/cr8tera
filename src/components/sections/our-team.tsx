@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const teamData = [
   { id: 1, title: "Harness the power of AI-Powered workflow", svg: "/images/vectors/team/1.svg", img: "/images/team-1.png" },
-  { id: 2, title: "Harness the power of AI-Powered workflow", svg: null, img: "/images/team-2.png" }, // middle one has no svg
+  { id: 2, title: "Harness the power of AI-Powered workflow", svg: null, img: "/images/team-2.png" }, 
   { id: 3, title: "Harness the power of AI-Powered workflow", svg: "/images/vectors/team/3.svg", img: "/images/team-3.png" },
 ];
 
@@ -55,7 +55,7 @@ export default function OurTeamSection() {
             </div>
 
             {/* Bottom overlay */}
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-full bg-black/70 rounded-xl py-3 px-5 text-white text-sm font-medium z-20">
+            <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-full bg-black/70 rounded-xl py-3 px-5 text-white text-sm font-medium z-20">
               {member.title}
             </div>
           </div>
