@@ -25,7 +25,7 @@ const WhyChooseUsSection = () => {
 
   // Trigger only when fully visible
   const [ref, inView] = useInView({
-    threshold: 1, // 👈 must be fully in view
+    threshold: 0.5, // 👈 must be fully in view
     triggerOnce: true,
   });
 
@@ -66,7 +66,7 @@ const WhyChooseUsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative z-12 min-h-fit w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pt-[450px] pb-[50px] bg-black"
+      className="relative h-screen z-12 w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pt-[450px] pb-[50px] bg-black"
     >
       {/* Background */}
       <div className="absolute inset-0 -z-20">
