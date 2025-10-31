@@ -9,22 +9,33 @@ import { Icons } from "../ui/icons";
 
 const CTASection = () => {
   const controls = useAnimation();
-  const buttonControls = useAnimation(); // separate for sequential timing
-  const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.3 });
+  const buttonControls = useAnimation();
+  const [ref, inView] = useInView({
+    triggerOnce: false, // 👈 Allow retriggering every time it enters
+    threshold: 0.3,
+  });
 
   useEffect(() => {
     if (inView) {
-      // Step 1: Play text scatter animation
+      // Reset states before replay
+      controls.set("hidden");
+      buttonControls.set("hidden");
+
+      // Step 1: Play scatter animation
       controls.start("visible").then(() => {
-        // Step 2: Trigger button animation after text completes
+        // Step 2: Button appears after text animation
         buttonControls.start("visible");
       });
+    } else {
+      // Optional: Reset animations when out of view
+      controls.set("hidden");
+      buttonControls.set("hidden");
     }
-  }, [controls, buttonControls, inView]);
+  }, [inView, controls, buttonControls]);
 
   const scatterText = "Creating new worlds, an AI workflow at a time.";
 
-  // scatter-in text animation
+  // Scatter text animation
   const scatterVariants: any = {
     hidden: (i: number) => ({
       opacity: 0,
@@ -45,6 +56,7 @@ const CTASection = () => {
     }),
   };
 
+  // Button grow animation
   const buttonVariants: any = {
     hidden: {
       width: 56,
@@ -63,6 +75,7 @@ const CTASection = () => {
     },
   };
 
+  // Button text animation
   const textVariants: any = {
     hidden: { opacity: 0, x: -8 },
     visible: {
@@ -125,7 +138,11 @@ const CTASection = () => {
                 overflow: "hidden",
               }}
             >
-              <motion.span variants={textVariants} initial="hidden" animate={buttonControls}>
+              <motion.span
+                variants={textVariants}
+                initial="hidden"
+                animate={buttonControls}
+              >
                 Try Demo
               </motion.span>
             </Button>

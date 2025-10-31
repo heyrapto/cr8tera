@@ -21,7 +21,7 @@ const HeroSection = () => {
                 {/* Title */}
                 <div className="flex flex-col items-center">
                     <h1 className="text-6xl font-bold leading-tight md:text-8xl">Create</h1>
-                    <span className="text-lg md:text-4xl mb-2">your</span>
+                    <span className="text-lg md:text-4xl mb-10">your</span>
                     {/* animated card */}
                     <AnimatedCard />
                 </div>

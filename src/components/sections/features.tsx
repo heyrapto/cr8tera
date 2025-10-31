@@ -64,7 +64,7 @@ const FeaturesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black pt-[100px] -mt-[100vh]"
+      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-black pt-[100px]"
     >
       {/* Background */}
       <div className="absolute inset-0 -z-10">

@@ -17,14 +17,27 @@ const ParallaxTransition = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const [totalHeight, setTotalHeight] = useState(scrollDistance);
+  const [viewportHeight, setViewportHeight] = useState(0);
+
+  // Track viewport height for responsive calculations
+  useLayoutEffect(() => {
+    const updateViewportHeight = () => {
+      setViewportHeight(window.innerHeight);
+    };
+    updateViewportHeight();
+    window.addEventListener("resize", updateViewportHeight);
+    return () => window.removeEventListener("resize", updateViewportHeight);
+  }, []);
 
   // measure bottom section height dynamically
   useLayoutEffect(() => {
-    if (bottomRef.current) {
-      const height = bottomRef.current.offsetHeight + window.innerHeight;
-      setTotalHeight(height);
+    if (bottomRef.current && viewportHeight > 0) {
+      // Container height should include viewport height for animation space
+      // but we'll adjust positioning to prevent extra space in document flow
+      const bottomHeight = bottomRef.current.offsetHeight;
+      setTotalHeight(bottomHeight + viewportHeight);
     }
-  }, []);
+  }, [viewportHeight]);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -34,13 +47,19 @@ const ParallaxTransition = ({
   // Animations
   const topScale = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.96, 0.96]);
   const topOpacity = useTransform(scrollYProgress, [0, 0.8, 1], [1, 0.5, 0]);
-  const bottomY = useTransform(scrollYProgress, [0, 1], ["100%", "0%"]);
+  // Start from viewport height below, end at natural position
+  const bottomY = useTransform(scrollYProgress, [0, 1], ["100vh", "0%"]);
 
   return (
     <div
       ref={containerRef}
       className="relative overflow-hidden"
-      style={{ height: `${totalHeight}px` }}
+      style={{ 
+        // Height includes viewport for animation, but we'll use negative margin to offset
+        height: `${totalHeight}px`,
+        // Negative margin-bottom to cancel out the extra viewport height in document flow
+        marginBottom: viewportHeight > 0 ? `-${viewportHeight}px` : 0
+      }}
     >
       {/* Top Section */}
       <motion.div
