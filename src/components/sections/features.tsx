@@ -15,46 +15,51 @@ const FeaturesSection = () => {
 
   useEffect(() => {
     if (!sectionRef.current || !cardsWrapperRef.current) return;
-
+  
     const ctx = gsap.context(() => {
       const cards = gsap.utils.toArray<HTMLDivElement>(".feature-card");
-
-      // Reset all card positions (stacked vertically)
-      gsap.set(cards, {
-        yPercent: (i) => i * 50, // space between cards
-      });
-
+      const totalSteps = cards.length - 1;
+  
+      // Reset initial vertical stacking
+      gsap.set(cards, { yPercent: (i) => i * 50 });
+  
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=3000",
-          scrub: 1,
+          end: () => `+=${window.innerHeight * (totalSteps + 0.5)}`, // dynamic length
+          scrub: 0.6, // smoother scroll
           pin: true,
           anticipatePin: 1,
           snap: {
-            snapTo: "labelsDirectional", // snaps to each card reveal
-            duration: 0.6,
+            snapTo: (progress) => {
+              const snapPoints = Array.from(
+                { length: totalSteps + 1 },
+                (_, i) => i / totalSteps
+              );
+              return gsap.utils.snap(snapPoints, progress);
+            },
+            duration: 0.4,
             ease: "power2.inOut",
           },
         },
       });
-
-      // Each step slides cards upward by 120% height
+  
+      // Slide each card upward smoothly (no fade)
       cards.forEach((_, i) => {
-        if (i < cards.length - 1) {
+        if (i < totalSteps) {
           tl.to(cards, {
-            yPercent: `-=${120}`,
+            yPercent: `-=${50}`,
             ease: "power2.inOut",
-            duration: 1.5,
+            duration: 1,
           });
-          tl.addLabel(`step-${i}`);
         }
       });
     }, sectionRef);
-
+  
     return () => ctx.revert();
   }, []);
+  
 
   return (
     <section
