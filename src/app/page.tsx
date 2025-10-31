@@ -21,7 +21,8 @@ export default function Home() {
     <ParallaxTransition topSection={<HeroSection />} bottomSection={<CTASection />} />
     <FeaturesSection />
     <OurTeamSection />
-    <ParallaxTransition topSection={<MixUpSection />} bottomSection={<WhyChooseUsSection />} />
+    <MixUpSection />
+    <WhyChooseUsSection />
     <SummarySection />
     <ExposureSection />
     <TestimonialsSection />

@@ -43,7 +43,7 @@ const MixUpSection = () => {
   return (
     <section
       ref={ref}
-      className="relative flex flex-col items-center justify-start text-start bg-white rounded-t-[60px] pt-[300px] pb-32 mt-48 overflow-hidden -z-10"
+      className="relative flex flex-col items-center justify-start text-start bg-white rounded-t-[60px] pt-[300px] pb-32 mt-48 overflow-hidden -z-10 h-screen"
     >
       {/* Background */}
       <div className="absolute inset-0 bg-white z-0"></div>
