@@ -11,53 +11,46 @@ gsap.registerPlugin(ScrollTrigger);
 
 const FeaturesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
-  const leftTopRef = useRef<HTMLDivElement>(null);
-  const leftBottomRef = useRef<HTMLDivElement>(null);
-  const rightTopRef = useRef<HTMLDivElement>(null);
-  const rightBottomRef = useRef<HTMLDivElement>(null);
+  const cardsWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (!sectionRef.current) return;
+    if (!sectionRef.current || !cardsWrapperRef.current) return;
 
     const ctx = gsap.context(() => {
-      gsap.set([leftTopRef.current, rightTopRef.current], { yPercent: 0, zIndex: 2 });
-      gsap.set([leftBottomRef.current, rightBottomRef.current], { yPercent: 100, zIndex: 1, opacity: 0 });
+      const cards = gsap.utils.toArray<HTMLDivElement>(".feature-card");
+
+      // Reset all card positions (stacked vertically)
+      gsap.set(cards, {
+        yPercent: (i) => i * 50, // space between cards
+      });
 
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
           start: "top top",
-          end: "+=1500",
-          scrub: 0.8,
+          end: "+=3000",
+          scrub: 1,
           pin: true,
           anticipatePin: 1,
+          snap: {
+            snapTo: "labelsDirectional", // snaps to each card reveal
+            duration: 0.6,
+            ease: "power2.inOut",
+          },
         },
       });
 
-      // Animate top cards out (up) and new ones in (from below)
-      tl.to(
-        [leftTopRef.current, rightTopRef.current],
-        {
-          yPercent: -100,
-          ease: "power2.inOut",
-          duration: 1,
-        },
-        0
-      );
-
-      tl.to(
-        [leftBottomRef.current, rightBottomRef.current],
-        {
-          yPercent: 0,
-          opacity: 1,
-          ease: "power2.inOut",
-          duration: 1,
-        },
-        0
-      );
-
-      // Hide the top ones once fully moved out to prevent ghost overlap
-      tl.set([leftTopRef.current, rightTopRef.current], { opacity: 0 });
+      // Each step slides cards upward by 120% height
+      cards.forEach((_, i) => {
+        if (i < cards.length - 1) {
+          tl.to(cards, {
+            yPercent: `-=${120}`,
+            ease: "power2.inOut",
+            duration: 1.5,
+          });
+          tl.addLabel(`step-${i}`);
+        }
+      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -66,9 +59,9 @@ const FeaturesSection = () => {
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black pt-[100px]"
     >
-      {/* Background stays static */}
+      {/* Background */}
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/backgrounds/features-bg.svg"
@@ -87,23 +80,21 @@ const FeaturesSection = () => {
         </div>
       </div>
 
-      {/* Cards container */}
-      <div className="relative w-full max-w-[1400px] h-full px-[150px]">
-        {/* Left cards */}
-        <div ref={leftTopRef} className="absolute left-0 top-1/2 -translate-y-1/2">
-          <FeaturesCard {...featuresData[0]} />
-        </div>
-        <div ref={leftBottomRef} className="absolute left-0 top-1/2 -translate-y-1/2">
-          <FeaturesCard {...featuresData[2]} />
-        </div>
-
-        {/* Right cards */}
-        <div ref={rightTopRef} className="absolute right-0 top-1/2 -translate-y-1/2">
-          <FeaturesCard {...featuresData[1]} />
-        </div>
-        <div ref={rightBottomRef} className="absolute right-0 top-1/2 -translate-y-1/2">
-          <FeaturesCard {...featuresData[3]} />
-        </div>
+      {/* Cards wrapper */}
+      <div
+        ref={cardsWrapperRef}
+        className="relative grid grid-cols-2 items-center justify-center gap-2 pt-[350px]"
+      >
+        {featuresData.slice(0, 4).map((data, i) => (
+          <div
+            key={i}
+            className={`feature-card w-full flex ${
+              i % 2 === 0 ? "justify-start" : "justify-end"
+            }`}
+          >
+            <FeaturesCard {...data} />
+          </div>
+        ))}
       </div>
     </section>
   );
