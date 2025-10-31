@@ -1,3 +1,4 @@
+import HeroToCTAParallax from "@/components/animations/hero-parallax";
 import CTASection from "@/components/sections/cta";
 import ExposureSection from "@/components/sections/exposure";
 import FeaturesSection from "@/components/sections/features";
@@ -16,8 +17,7 @@ export default function Home() {
   return (
    <ReactLenis root>
     <Navbar />
-    <HeroSection />
-    <CTASection />
+    <HeroToCTAParallax />
     <FeaturesSection />
     <OurTeamSection />
     <MixUpSection />
