@@ -21,37 +21,37 @@ const InfiniteScroll = ({
 
   useEffect(() => {
     if (!containerRef.current || !scrollerRef.current) return;
-
-    const containerWidth = containerRef.current.offsetWidth;
-    const scrollerWidth = scrollerRef.current.scrollWidth / 2; // half because we duplicated
-
-    // Use real width for perfect looping
+  
+    const scrollerWidth = scrollerRef.current.scrollWidth / 2;
+    const animationName = `scroll-${direction}-${Date.now()}`; // Unique name
+  
     const keyframes = `
-      @keyframes scroll-${direction} {
+      @keyframes ${animationName} {
         0% { transform: translateX(0); }
         100% { transform: translateX(${direction === "left" ? -scrollerWidth : scrollerWidth}px); }
       }
     `;
-
-    // Inject dynamic keyframes
+  
     const styleTag = document.createElement("style");
     styleTag.innerHTML = keyframes;
     document.head.appendChild(styleTag);
-
+  
+    // Apply the animation
+    if (scrollerRef.current) {
+      scrollerRef.current.style.animation = `${animationName} ${speed}s linear infinite`;
+    }
+  
     return () => {
       document.head.removeChild(styleTag);
     };
-  }, [direction]);
+  }, [direction, speed]);
 
   return (
     <div ref={containerRef} className={`relative w-screen overflow-hidden ${className}`}>
       <div
-        ref={scrollerRef}
-        className="flex w-fit"
-        style={{
-          animation: `scroll-${direction} ${speed}s linear infinite`,
-        }}
-      >
+  ref={scrollerRef}
+  className="flex w-fit"
+>
         {/* Two identical sets for seamless loop */}
         <div className="flex shrink-0">{children}</div>
         <div className="flex shrink-0">{children}</div>
