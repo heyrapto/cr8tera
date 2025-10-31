@@ -25,24 +25,24 @@ const FeaturesSection = () => {
   
       const tl = gsap.timeline({
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top top",
-          end: () => `+=${window.innerHeight * (totalSteps + 0.5)}`, // dynamic length
-          scrub: 0.6, // smoother scroll
-          pin: true,
-          anticipatePin: 1,
-          snap: {
-            snapTo: (progress) => {
-              const snapPoints = Array.from(
-                { length: totalSteps + 1 },
-                (_, i) => i / totalSteps
-              );
-              return gsap.utils.snap(snapPoints, progress);
+            trigger: sectionRef.current,
+            start: "top top",
+            end: () => `+=${window.innerHeight * (totalSteps + 0.5)}`,
+            scrub: true, // Change from 0.6 to true (instant response)
+            pin: true,
+            anticipatePin: 1,
+            snap: {
+              snapTo: (progress) => {
+                const snapPoints = Array.from(
+                  { length: totalSteps + 1 },
+                  (_, i) => i / totalSteps
+                );
+                return gsap.utils.snap(snapPoints, progress);
+              },
+              duration: 0.4,
+              ease: "power2.inOut",
             },
-            duration: 0.4,
-            ease: "power2.inOut",
           },
-        },
       });
   
       // Slide each card upward smoothly (no fade)

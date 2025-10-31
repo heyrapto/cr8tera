@@ -30,6 +30,20 @@ export const featuresData = [
     {
         tagline: {
             value: {
+                primaryTagline: "Generate",
+                secondaryTagline: "CONTENT QUICKLY, GAIN BRAND EXPOSURE, AND FIND YOUR AUDIENCE." 
+            },
+            isSlanted: true
+        },
+        title: "Create more, manage less",
+        desc: "Harness the power of AI-Powered workflow automation for your marketing, creative & business projects.",
+        size: {
+            width: "515px"
+        }
+    },
+    {
+        tagline: {
+            value: {
                 primaryTagline: "easy.",
                 secondaryTagline: "TO USE."
             },
@@ -41,18 +55,4 @@ export const featuresData = [
             width: "690px"
         }
     },
-    {
-        tagline: {
-            value: {
-                primaryTagline: "Generate",
-                secondaryTagline: "CONTENT QUICKLY, GAIN BRAND EXPOSURE, AND FIND YOUR AUDIENCE." 
-            },
-            isSlanted: true
-        },
-        title: "Create more, manage less",
-        desc: "Harness the power of AI-Powered workflow automation for your marketing, creative & business projects.",
-        size: {
-            width: "515px"
-        }
-    }
 ];
