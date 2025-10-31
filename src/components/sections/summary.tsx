@@ -28,7 +28,7 @@ const SummarySection = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex flex-col items-center text-center"
+      className="relative min-h-screen flex flex-col items-center text-center" 
     >
       <div className="absolute inset-0 -z-10">
         <Image

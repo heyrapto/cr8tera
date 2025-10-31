@@ -86,7 +86,7 @@ const MixUpSection = () => {
 
       {/* Graphic Area */}
       <motion.div
-        className="relative z-10 mt-24 flex flex-col items-center justify-center w-full max-w-[700px] px-4"
+        className="relative z-10 mt-0 flex flex-col items-center justify-center w-full max-w-[700px] px-4"
         variants={fadeUp(1.1)}
         initial="hidden"
         animate={controls}
