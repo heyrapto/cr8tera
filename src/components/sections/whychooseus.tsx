@@ -138,7 +138,7 @@ const WhyChooseUsSection = () => {
             ))}
 
             <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
-            <p className="text-base text-gray-300 leading-relaxed">
+            <p className="text-base text-gray-300 leading-relaxed w-[400px]">
               {item.text}
             </p>
           </motion.div>

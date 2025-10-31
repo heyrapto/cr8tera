@@ -7,10 +7,20 @@ import { useEffect } from "react";
 
 const ExposureSection = () => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.3, triggerOnce: true });
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+    triggerOnce: false, // 👈 replay every time it's visible
+  });
 
   useEffect(() => {
-    if (inView) controls.start("visible");
+    if (inView) {
+      // Reset and replay animation when section enters view
+      controls.set("hidden");
+      controls.start("visible");
+    } else {
+      // Reset back to hidden when leaving
+      controls.set("hidden");
+    }
   }, [inView, controls]);
 
   const exposureItems = [
@@ -21,22 +31,23 @@ const ExposureSection = () => {
     { image: "/images/chat.svg", title: "SOCIAL MEDIA", tag: ".05" },
   ];
 
-  // Animation: cards expand from center except the first
+  // Animation: cards expand one after another from center
   const cardVariants: any = {
-    hidden: { scaleX: 0, opacity: 0, originX: 0.5 },
-    visible: (i: number) =>
-      i === 0
-        ? { scaleX: 1, opacity: 1 } 
-        : {
-            scaleX: 1,
-            opacity: 1,
-            originX: 0.5,
-            transition: {
-              duration: 0.4,
-              delay: i * 0.15,
-              ease: "easeInOut",
-            },
-        },
+    hidden: {
+      scaleX: 0,
+      opacity: 0,
+      originX: 0.5,
+    },
+    visible: (i: number) => ({
+      scaleX: 1,
+      opacity: 1,
+      originX: 0.5,
+      transition: {
+        duration: 0.4,
+        delay: i * 0.15,
+        ease: "easeInOut",
+      },
+    }),
   };
 
   return (
@@ -48,7 +59,7 @@ const ExposureSection = () => {
       <div className="absolute inset-0 -z-10">
         <Image
           src="/images/backgrounds/exposure.svg"
-          alt="Hero background"
+          alt="Exposure background"
           fill
           priority
           className="object-cover object-center opacity-100"
@@ -84,9 +95,9 @@ const ExposureSection = () => {
               >
                 <div className="flex gap-3 items-center">
                   <Image src={e.image} alt={e.title} width={50} height={50} />
-                  <span>{e.title}</span>
+                  <span className="text-xl">{e.title}</span>
                 </div>
-                <p>{e.tag}</p>
+                <p className="text-white">{e.tag}</p>
               </motion.div>
             ))}
           </div>

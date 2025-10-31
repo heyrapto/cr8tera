@@ -7,10 +7,15 @@ import { useEffect } from "react";
 
 const SummarySection = () => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: true });
+  const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: false }); // 👈 replay every time
 
   useEffect(() => {
-    if (inView) controls.start("visible");
+    if (inView) {
+      controls.set("hidden"); // reset before replay
+      controls.start("visible");
+    } else {
+      controls.set("hidden"); // reset when out of view
+    }
   }, [inView, controls]);
 
   const sentence =
@@ -18,7 +23,7 @@ const SummarySection = () => {
   const words = sentence.split(" ");
 
   const wordVariants: any = {
-    hidden: { color: "#1e1e1e" }, // dark gray / almost black
+    hidden: { color: "#1e1e1e" },
     visible: (i: number) => ({
       color: "#ffffff",
       transition: { delay: i * 0.2, duration: 0.5, ease: "easeInOut" },
@@ -28,7 +33,7 @@ const SummarySection = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-screen flex flex-col items-center text-center" 
+      className="relative min-h-screen flex flex-col items-center text-center"
     >
       <div className="absolute inset-0 -z-10">
         <Image
@@ -48,7 +53,7 @@ const SummarySection = () => {
               key={i}
               custom={i}
               variants={wordVariants}
-              initial={i === 0 ? "visible" : "hidden"}
+              initial="hidden"
               animate={controls}
               className="mx-1"
             >
