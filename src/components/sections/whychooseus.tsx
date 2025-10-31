@@ -66,7 +66,7 @@ const WhyChooseUsSection = () => {
   return (
     <section
       ref={ref}
-      className="relative min-h-fit w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pt-[450px] pb-[50px]"
+      className="relative z-12 min-h-fit w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pt-[450px] pb-[50px] bg-black"
     >
       {/* Background */}
       <div className="absolute inset-0 -z-20">

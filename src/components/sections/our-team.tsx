@@ -40,7 +40,7 @@ export default function OurTeamSection() {
   return (
     <section
       ref={ref}
-      className="relative min-h-fit flex flex-col items-center justify-center py-28 text-center bg-transparent -mb-[190px]"
+      className="relative z-50 min-h-fit flex flex-col items-center justify-center py-28 text-center bg-transparent -mb-[190px]"
     >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
