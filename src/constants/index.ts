@@ -11,7 +11,8 @@ export const featuresData = [
         desc: "Harness the power of AI-Powered workflow automation for your marketing, creative & business projects.",
         size: {
             width: "350px"
-        }
+        },
+        hasBackSide: false
     },
     {
         tagline: {
@@ -25,7 +26,8 @@ export const featuresData = [
         desc: "Love to prompt? Great. Not a fan? No problem, we've got you. Easy inputs, quality outputs. No prompt engineering fuss, all flexibility and fun.",
         size: {
             width: "690px"
-        }
+        },
+        hasBackSide: true
     },
     {
         tagline: {
@@ -39,7 +41,8 @@ export const featuresData = [
         desc: "Harness the power of AI-Powered workflow automation for your marketing, creative & business projects.",
         size: {
             width: "515px"
-        }
+        },
+        hasBackSide: false
     },
     {
         tagline: {
@@ -53,6 +56,7 @@ export const featuresData = [
         desc: "Love to prompt? Great. Not a fan? No problem, we've got you. Easy inputs, quality outputs. No prompt engineering fuss, all flexibility and fun.",
         size: {
             width: "690px"
-        }
+        },
+        hasBackSide: false
     },
 ];

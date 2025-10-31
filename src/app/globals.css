@@ -36,6 +36,38 @@
   }
 }
 
-.text-outline {
-  paint-order: stroke fill;
+.text-stroke {
+  -webkit-text-stroke: 3px #fff;
+  color: transparent;
+}
+
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease;
+}
+
+/* 🔥 Only cards with has-back class will flip */
+.flip-card.has-back:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
 }

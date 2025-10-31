@@ -75,16 +75,15 @@ const Footer = () => {
                 </div>
             </div>
 
-            <h1 className="w-full text-[25vw] text-center font-radley text-transparent bg-clip-text bg-[#71C3FD] text-outline">
+            <h1 className="w-full text-[25vw] text-center font-radley text-transparent bg-clip-text bg-[#71C3FD] text-stroke">
                 Cr8tera
             </h1>
 
             <Image
                 src="./images/backgrounds/footer-grad.svg"
-                alt="Footer grad"
-                width={1500}
-                height={1500}
-                className="absolute bottom-0 left-0 right-0 mx-auto -z-10"
+                alt="Footer gradient"
+                fill
+                className="absolute bottom-0 left-0 right-0 mx-auto -z-10 h-full w-full"
             />
         </footer>
     )
