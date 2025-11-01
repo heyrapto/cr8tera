@@ -1,30 +1,63 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 import Image from "next/image";
 import { FeaturesCard } from "../ui/features-card";
 import { featuresData } from "@/constants";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 
 const FeaturesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsWrapperRef = useRef<HTMLDivElement>(null);
 
+  useEffect(() => {
+    const section = sectionRef.current;
+    const wrapper = cardsWrapperRef.current;
+
+    if (!section || !wrapper) return;
+
+    // Create a timeline
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "top top",
+        end: "+=200%", // controls scroll length
+        scrub: true,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
+
+    // Animate wrapper up by one viewport height
+    tl.to(wrapper, {
+      y: "-100vh",
+      ease: "none",
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      tl.kill();
+    };
+  }, []);
+
   return (
     <section
       ref={sectionRef}
-      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black pt-[100px]"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black"
     >
       {/* Background */}
       <div className="absolute inset-0 z-0">
-  <Image
-    src="/images/backgrounds/features-bg.svg"
-    alt="Features background"
-    fill
-    priority
-    className="object-cover object-center opacity-80"
-  />
-</div>
-
+        <Image
+          src="/images/backgrounds/features-bg.svg"
+          alt="Features background"
+          fill
+          priority
+          className="object-cover object-center opacity-80"
+        />
+      </div>
 
       {/* Tag */}
       <div className="absolute top-[100px] left-[150px] z-10">
@@ -34,12 +67,12 @@ const FeaturesSection = () => {
         </div>
       </div>
 
-      {/* Cards wrapper */}
+      {/* Cards Wrapper */}
       <div
         ref={cardsWrapperRef}
         className="absolute inset-0 w-full max-w-[1400px] mx-auto flex flex-col justify-center"
       >
-        {/* Row 1 — visible */}
+        {/* Row 1 */}
         <div className="flex w-full justify-between items-start px-[120px]">
           <div className="transform translate-y-[-40px] flex-1 flex justify-start">
             <FeaturesCard {...featuresData[0]} />
@@ -49,7 +82,7 @@ const FeaturesSection = () => {
           </div>
         </div>
 
-        {/* Row 2 — positioned below viewport, hidden by overflow */}
+        {/* Row 2 */}
         <div
           className="absolute left-0 w-full flex justify-between items-start px-[180px] gap-20"
           style={{ top: "100vh" }}
