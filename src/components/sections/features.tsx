@@ -15,15 +15,16 @@ const FeaturesSection = () => {
       className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black pt-[100px]"
     >
       {/* Background */}
-      <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/backgrounds/features-bg.svg"
-          alt="Features background"
-          fill
-          priority
-          className="object-cover object-center"
-        />
-      </div>
+      <div className="absolute inset-0 z-0">
+  <Image
+    src="/images/backgrounds/features-bg.svg"
+    alt="Features background"
+    fill
+    priority
+    className="object-cover object-center opacity-80"
+  />
+</div>
+
 
       {/* Tag */}
       <div className="absolute top-[100px] left-[150px] z-10">
