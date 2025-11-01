@@ -1,9 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useAnimation } from "framer-motion";
-import { useEffect } from "react";
-import { useInView } from "react-intersection-observer";
+import { motion } from "framer-motion";
 
 const WhyChooseUsSection = () => {
   const chooseData = [
@@ -19,55 +17,22 @@ const WhyChooseUsSection = () => {
     },
   ];
 
-  // Animation controllers
-  const controls = useAnimation();
-  const logoControls = useAnimation();
-
-  // Trigger only when fully visible
-  const [ref, inView] = useInView({
-    threshold: 0.5, // 👈 must be fully in view
-    triggerOnce: true,
-  });
-
-  useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-      logoControls.start("visible");
-    }
-  }, [inView, controls, logoControls]);
-
-  // Card animation
   const cardVariants: any = {
-    hidden: { scaleX: 0.7, opacity: 0 },
+    hidden: { scale: 0.8, opacity: 0, y: 40 },
     visible: (i: number) => ({
-      scaleX: 1,
+      scale: 1,
       opacity: 1,
+      y: 0,
       transition: {
-        duration: i === 0 ? 1.3 : 0.9,
-        delay: i * 0.3,
+        duration: 0.8,
+        delay: i * 0.2,
         ease: [0.25, 1, 0.3, 1],
       },
     }),
   };
 
-  // Rotating logo
-  const logoVariants: any = {
-    hidden: { rotateY: 0 },
-    visible: {
-      rotateY: [0, 360],
-      transition: {
-        duration: 12,
-        ease: "linear",
-        repeat: Infinity,
-      },
-    },
-  };
-
   return (
-    <section
-      ref={ref}
-      className="relative h-screen z-12 w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pt-[450px] pb-[50px] bg-black"
-    >
+    <section className="relative h-screen z-12 w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pt-[450px] pb-[50px] bg-black">
       {/* Background */}
       <div className="absolute inset-0 -z-20">
         <Image
@@ -79,22 +44,18 @@ const WhyChooseUsSection = () => {
         />
       </div>
 
-      {/* Centered Rotating Logo */}
-      <motion.div
-        className="absolute inset-0 flex items-center justify-center -z-10 pb-[250px]"
-        variants={logoVariants}
-        initial="hidden"
-        animate={logoControls}
-        style={{ transformOrigin: "center", transformStyle: "preserve-3d" }}
-      >
-        <Image
-          src="/images/whychoose.svg"
-          alt="Why Choose Us Icon"
-          width={500}
-          height={500}
-          className="object-contain"
-        />
-      </motion.div>
+      {/* Rotating logo (CSS animation instead of JS) */}
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pb-[250px]">
+        <div className="animate-spin-slow will-change-transform">
+          <Image
+            src="/images/whychoose.svg"
+            alt="Why Choose Us Icon"
+            width={500}
+            height={500}
+            className="object-contain"
+          />
+        </div>
+      </div>
 
       {/* Creative Platform Tag */}
       <div className="absolute top-[100px] left-[150px] flex items-center gap-2 bg-[#0A0F1E]/80 border border-[#1E2E5C] px-4 py-2 rounded-full text-sm uppercase tracking-wide">
@@ -117,10 +78,10 @@ const WhyChooseUsSection = () => {
             custom={i}
             variants={cardVariants}
             initial="hidden"
-            animate={controls}
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
             className="relative bg-[#FFFFFF1C]/90 border border-[#1B408F]/50 rounded-2xl p-8 w-full text-start backdrop-blur-md origin-center"
           >
-            {/* Corner rectangles */}
             {[
               "top-0 left-0 -translate-x-1/2 -translate-y-1/2",
               "top-0 right-0 translate-x-1/2 -translate-y-1/2",
@@ -136,7 +97,6 @@ const WhyChooseUsSection = () => {
                 className={`absolute ${pos}`}
               />
             ))}
-
             <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
             <p className="text-base text-gray-300 leading-relaxed w-[400px]">
               {item.text}
@@ -144,6 +104,22 @@ const WhyChooseUsSection = () => {
           </motion.div>
         ))}
       </div>
+
+      {/* CSS keyframes */}
+      <style jsx global>{`
+        @keyframes spin-slow {
+          from {
+            transform: rotateY(0deg);
+          }
+          to {
+            transform: rotateY(360deg);
+          }
+        }
+        .animate-spin-slow {
+          animation: spin-slow 15s linear infinite;
+          transform-style: preserve-3d;
+        }
+      `}</style>
     </section>
   );
 };
