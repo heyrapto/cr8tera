@@ -36,7 +36,7 @@ const FeaturesSection = () => {
       {/* Cards wrapper */}
       <div
         ref={cardsWrapperRef}
-        className="relative w-full max-w-[1400px] mx-auto"
+        className="absolute top-[500px] inset-0 w-full max-w-[1400px] mx-auto"
       >
         {/* Row 1 — visible */}
         <div className="flex w-full justify-between items-start px-[120px]">
@@ -49,7 +49,10 @@ const FeaturesSection = () => {
         </div>
 
         {/* Row 2 — positioned below viewport, hidden by overflow */}
-        <div className="absolute -bottom-[800px] left-0 w-full flex justify-between items-start px-[180px] gap-20">
+        <div
+          className="absolute left-0 w-full flex justify-between items-start px-[180px] gap-20"
+          style={{ top: "100vh" }}
+        >
           <div className="transform translate-y-[40px] flex-1 flex justify-start">
             <FeaturesCard {...featuresData[2]} />
           </div>
