@@ -36,7 +36,7 @@ const FeaturesSection = () => {
       {/* Cards wrapper */}
       <div
         ref={cardsWrapperRef}
-        className="absolute top-[500px] inset-0 w-full max-w-[1400px] mx-auto"
+        className="absolute inset-0 w-full max-w-[1400px] mx-auto flex flex-col justify-center"
       >
         {/* Row 1 — visible */}
         <div className="flex w-full justify-between items-start px-[120px]">
