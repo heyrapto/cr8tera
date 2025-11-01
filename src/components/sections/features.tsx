@@ -1,70 +1,18 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FeaturesCard } from "../ui/features-card";
 import { featuresData } from "@/constants";
-
-gsap.registerPlugin(ScrollTrigger);
 
 const FeaturesSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
   const cardsWrapperRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    if (!sectionRef.current || !cardsWrapperRef.current) return;
-  
-    const ctx = gsap.context(() => {
-      const cards = gsap.utils.toArray<HTMLDivElement>(".feature-card");
-      const totalSteps = cards.length - 1;
-  
-      // Reset initial vertical stacking
-      gsap.set(cards, { yPercent: (i) => i * 50 });
-  
-      const tl = gsap.timeline({
-        scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: () => `+=${window.innerHeight * (totalSteps + 0.5)}`,
-            scrub: true, // Change from 0.6 to true (instant response)
-            pin: true,
-            anticipatePin: 1,
-            snap: {
-              snapTo: (progress) => {
-                const snapPoints = Array.from(
-                  { length: totalSteps + 1 },
-                  (_, i) => i / totalSteps
-                );
-                return gsap.utils.snap(snapPoints, progress);
-              },
-              duration: 0.4,
-              ease: "power2.inOut",
-            },
-          },
-      });
-  
-      // Slide each card upward smoothly (no fade)
-      cards.forEach((_, i) => {
-        if (i < totalSteps) {
-          tl.to(cards, {
-            yPercent: `-=${50}`,
-            ease: "power2.inOut",
-            duration: 1,
-          });
-        }
-      });
-    }, sectionRef);
-  
-    return () => ctx.revert();
-  }, []);
-  
-
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center bg-black pt-[100px]"
+      className="relative h-screen w-full overflow-hidden flex items-center justify-center bg-black pt-[100px]"
     >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
@@ -88,18 +36,31 @@ const FeaturesSection = () => {
       {/* Cards wrapper */}
       <div
         ref={cardsWrapperRef}
-        className="relative grid grid-cols-2 items-center justify-center gap-2 pt-[350px]"
+        className="relative w-full max-w-[1400px] mx-auto"
       >
-        {featuresData.slice(0, 4).map((data, i) => (
-          <div
-            key={i}
-            className={`feature-card w-full flex ${
-              i % 2 === 0 ? "justify-start" : "justify-end"
-            }`}
-          >
-            <FeaturesCard {...data} />
+        {/* Row 1 — visible */}
+        <div className="flex w-full justify-between items-start px-[120px]">
+          <div className="transform translate-y-[-40px] flex-1 flex justify-start">
+            <FeaturesCard {...featuresData[0]} />
           </div>
-        ))}
+          <div className="transform translate-y-[60px] flex-1 flex justify-end">
+            <FeaturesCard {...featuresData[1]} />
+          </div>
+        </div>
+
+        {/* Row 2 — positioned below viewport, hidden by overflow */}
+        <div className="absolute -bottom-[800px] left-0 w-full flex justify-between items-start px-[180px] gap-20">
+          <div className="transform translate-y-[40px] flex-1 flex justify-start">
+            <FeaturesCard {...featuresData[2]} />
+          </div>
+          <div className="relative transform translate-y-[-20px] flex-1 flex justify-end">
+            <FeaturesCard {...featuresData[3]} />
+            {/* Try Demo Button */}
+            <button className="absolute right-[50px] bottom-[-80px] bg-[#3B6AFF] hover:bg-[#335AD9] text-white px-6 py-3 rounded-full text-sm font-medium transition">
+              Try Demo
+            </button>
+          </div>
+        </div>
       </div>
     </section>
   );
