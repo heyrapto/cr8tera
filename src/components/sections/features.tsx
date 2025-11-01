@@ -6,6 +6,8 @@ import { FeaturesCard } from "../ui/features-card";
 import { featuresData } from "@/constants";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { Button } from "../ui/button";
+import { Icons } from "../ui/icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,30 +18,31 @@ const FeaturesSection = () => {
   useEffect(() => {
     const section = sectionRef.current;
     const wrapper = cardsWrapperRef.current;
-
     if (!section || !wrapper) return;
 
-    // Create a timeline
+    // kill existing triggers before creating new ones
+    ScrollTrigger.getAll().forEach((t) => t.kill());
+
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "top top",
-        end: "+=200%", // controls scroll length
-        scrub: true,
+        end: () => "+=" + window.innerHeight * 1.2, // 👈 scrolls just past 1 screen height
+        scrub: 1,
         pin: true,
         anticipatePin: 1,
       },
     });
 
-    // Animate wrapper up by one viewport height
+    // Moves wrapper up exactly one viewport height
     tl.to(wrapper, {
       y: "-100vh",
       ease: "none",
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
       tl.kill();
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
 
@@ -92,10 +95,29 @@ const FeaturesSection = () => {
           </div>
           <div className="relative transform translate-y-[-20px] flex-1 flex justify-end">
             <FeaturesCard {...featuresData[3]} />
-            {/* Try Demo Button */}
-            <button className="absolute right-[50px] bottom-[-80px] bg-[#3B6AFF] hover:bg-[#335AD9] text-white px-6 py-3 rounded-full text-sm font-medium transition">
-              Try Demo
-            </button>
+        <div className="flex flex-col gap-12 items-center absolute right-[50px] bottom-[-80px]">
+          <div
+            className="overflow-hidden flex items-center justify-center"
+            style={{
+              borderRadius: "9999px",
+            }}
+          >
+            <Button
+              variant="primary"
+              radius="full"
+              icon={Icons.BlueButtonEllipse}
+              style={{
+                whiteSpace: "nowrap",
+                overflow: "hidden",
+              }}
+            >
+              <span
+              >
+                Try Demo
+              </span>
+            </Button>
+          </div>
+        </div>
           </div>
         </div>
       </div>

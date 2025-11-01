@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const SummarySection = () => {
   const controls = useAnimation();
-  const [ref, inView] = useInView({ threshold: 0.5, triggerOnce: false }); // 👈 replay every time
+  const [ref, inView] = useInView({ threshold: 0.7, triggerOnce: false }); // 👈 replay every time
 
   useEffect(() => {
     if (inView) {

@@ -79,7 +79,7 @@ const WhyChooseUsSection = () => {
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.4 }}
+            viewport={{ once: false, amount: 0.4 }}
             className="relative bg-[#FFFFFF1C]/90 border border-[#1B408F]/50 rounded-2xl p-8 w-full text-start backdrop-blur-md origin-center"
           >
             {[
