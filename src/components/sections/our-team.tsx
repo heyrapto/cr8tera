@@ -40,22 +40,16 @@ export default function OurTeamSection() {
   return (
     <section
       ref={ref}
-      className="relative z-50 min-h-fit flex flex-col items-center justify-center py-28 text-center bg-transparent -mb-[190px]"
+      className="relative z-50 min-h-fit flex flex-col items-center justify-center text-center bg-transparent -mt-40"
     >
       {/* Background */}
       <div className="absolute inset-0 -z-10">
-        <Image
-          src="/images/backgrounds/features-bg.svg"
-          alt="Hero background"
-          fill
-          priority
-          className="object-cover opacity-100"
-        />
+       <div className="bg-white"></div>
       </div>
 
-      <h2 className="text-white text-4xl md:text-5xl font-bold mb-16">Our Team</h2>
+      <h2 className="text-white text-4xl md:text-5xl font-bold mb-16 absolute bottom-20">Our Team</h2>
 
-      <div className="flex flex-col md:flex-row items-end justify-center gap-8 md:gap-12 w-full max-w-6xl px-6 absolute top-[150px] overflow-hidden">
+      <div className="flex flex-col md:flex-row items-end justify-center gap-8 md:gap-12 w-full max-w-6xl px-6 absolute -top-50 overflow-hidden">
         {teamData.map((member, index) => {
           const isMiddle = index === 1;
 
