@@ -105,7 +105,7 @@ const FeaturesSection = () => {
             <Button
               variant="primary"
               radius="full"
-              icon={Icons.BlueButtonEllipse}
+              icon={<Icons.BlueButtonEllipse />}
               style={{
                 whiteSpace: "nowrap",
                 overflow: "hidden",
