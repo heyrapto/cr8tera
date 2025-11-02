@@ -12,7 +12,7 @@ export const featuresData = [
         size: {
             width: "350px"
         },
-        hasBackSide: false
+        hasBackSide: true
     },
     {
         tagline: {
@@ -42,7 +42,7 @@ export const featuresData = [
         size: {
             width: "515px"
         },
-        hasBackSide: false
+        hasBackSide: true
     },
     {
         tagline: {
@@ -57,7 +57,7 @@ export const featuresData = [
         size: {
             width: "690px"
         },
-        hasBackSide: false
+        hasBackSide: true
     },
 ];
 
