@@ -32,7 +32,7 @@ const WhyChooseUsSection = () => {
   };
 
   return (
-    <section className="relative h-screen z-12 w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pt-[450px] pb-[50px] bg-black">
+    <section className="relative h-screen z-12 w-full flex flex-col justify-center text-white overflow-hidden px-[150px] pb-[50px] bg-black">
       {/* Background */}
       <div className="absolute inset-0 -z-20">
         <Image
@@ -64,7 +64,7 @@ const WhyChooseUsSection = () => {
       </div>
 
       {/* Heading */}
-      <div className="mt-[300px] max-w-[600px] text-left">
+      <div className="mt-[550px] max-w-[600px] text-left">
         <h1 className="text-6xl font-extrabold leading-tight">
           Why Use <br /> cre8tera?
         </h1>
@@ -80,7 +80,7 @@ const WhyChooseUsSection = () => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: false, amount: 0.4 }}
-            className="relative bg-[#FFFFFF1C]/90 border border-[#1B408F]/50 rounded-2xl p-8 w-full text-start backdrop-blur-md origin-center"
+            className="relative bg-[#FFFFFF1C]/90 border border-[#1B408F]/50 p-8 w-full text-start backdrop-blur-md origin-center"
           >
             {[
               "top-0 left-0 -translate-x-1/2 -translate-y-1/2",
