@@ -12,7 +12,7 @@ export const Icons = {
                     <stop offset="1" stopColor="#667EDB" />
                 </linearGradient>
                 <linearGradient id="paint1_linear_2378_11398" x1="17" y1="0" x2="17" y2="34" gradientUnits="userSpaceOnUse">
-                    <stop stop-color="white" />
+                    <stop stopColor="white" />
                     <stop offset="1" stopColor="white" stopOpacity="0.24" />
                 </linearGradient>
             </defs>

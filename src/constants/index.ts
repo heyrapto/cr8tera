@@ -60,3 +60,50 @@ export const featuresData = [
         hasBackSide: false
     },
 ];
+
+export     const footerLinks = [
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+    {
+        title: "Home",
+        href: "/",
+    },
+]

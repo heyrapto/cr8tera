@@ -27,17 +27,18 @@ const HeroSection = () => {
                 </div>
 
                 {/* Try Demo Button */}
-                <div className="mt-6 relative p-2 rounded-[20px] bg-linear-to-r from-[#1B408F] to-[#70FDFD] font-semibold text-white shadow-lg hover:opacity-90 ">
+                <div className="mt-24 relative rounded-[20px] bg-linear-to-r from-[#1B408F] to-[#70FDFD] font-semibold text-white shadow-lg inline-flex justify-start py-2 items-start px-2">
                     <Button
-                        icon={Icons.WhiteButtonEllipse}
-                        className="relative px-8 py-2 rounded-[15px] bg-linear-to-r from-[#5B7DCF] to-[#D2E5F5] font-semibold text-white shadow-lg hover:opacity-90"
+                        icon={<Icons.WhiteButtonEllipse />}
+                        isAnimated
+                        className="relative px-8 rounded-[15px] font-semibold text-white"
                     >
                         Try Demo
                     </Button>
                 </div>
 
                 {/* Ruler + Cursor */}
-                <div className="relative mt-6">
+                {/* <div className="relative mt-6">
                     <Image
                         src="/images/ruler.svg"
                         alt="Ruler"
@@ -52,10 +53,10 @@ const HeroSection = () => {
                         height={30}
                         className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[60%]"
                     />
-                </div>
+                </div> */}
 
                 {/* Bottom Texts */}
-                <div className="absolute left-10 top-1/2 translate-y-[50%] max-w-xs text-left text-sm leading-relaxed md:text-[1.3rem] font-semibold">
+                <div className="absolute left-10 top-1/2 translate-y-[60%] max-w-xs text-left text-sm leading-relaxed md:text-[1.3rem] font-semibold">
                     <p>
                         Welcome to create8
                         <br />
@@ -63,7 +64,7 @@ const HeroSection = () => {
                     </p>
                 </div>
 
-                <div className="absolute right-10 top-1/2 translate-y-[50%] max-w-sm text-left text-sm leading-relaxed md:text-[1.3rem]">
+                <div className="absolute right-10 top-1/2 translate-y-[70%] max-w-sm text-left text-sm leading-relaxed md:text-[1.3rem]">
                     <p>
                         Our mission is to enhance your online presence, your brand story, and
                         elevate your visibility. We accomplish this by prioritizing quality
