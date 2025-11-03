@@ -66,24 +66,14 @@ const WhyChooseUsSection = () => {
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: false, amount: 0.4 }}
-            className="relative bg-[#FFFFFF1C]/90 border border-[#1B408F]/50 p-8 w-full text-start backdrop-blur-md origin-center"
+            viewport={{ once: true, amount: 0.25 }}
+            className="relative bg-[#FFFFFF1C]/90 border border-[#1B408F]/50 p-8 w-full text-start backdrop-blur-md origin-center transform-gpu"
           >
-            {[
-              "top-0 left-0 -translate-x-1/2 -translate-y-1/2",
-              "top-0 right-0 translate-x-1/2 -translate-y-1/2",
-              "bottom-0 left-0 -translate-x-1/2 translate-y-1/2 rotate-180",
-              "bottom-0 right-0 translate-x-1/2 translate-y-1/2 rotate-180",
-            ].map((pos, j) => (
-              <Image
-                key={j}
-                src="/images/rectangle.svg"
-                alt="corner"
-                width={10}
-                height={10}
-                className={`absolute ${pos}`}
-              />
-            ))}
+            {/* Decorative corners via CSS instead of images for performance */}
+            <span className="pointer-events-none absolute w-2.5 h-2.5 border-t border-l border-[#1B408F]/50 -top-1 -left-1" />
+            <span className="pointer-events-none absolute w-2.5 h-2.5 border-t border-r border-[#1B408F]/50 -top-1 -right-1" />
+            <span className="pointer-events-none absolute w-2.5 h-2.5 border-b border-l border-[#1B408F]/50 -bottom-1 -left-1" />
+            <span className="pointer-events-none absolute w-2.5 h-2.5 border-b border-r border-[#1B408F]/50 -bottom-1 -right-1" />
             <h3 className="text-2xl font-semibold mb-2">{item.title}</h3>
             <p className="text-base text-gray-300 leading-relaxed w-[400px]">
               {item.text}

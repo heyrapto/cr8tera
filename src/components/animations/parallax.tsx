@@ -62,16 +62,16 @@ const ParallaxTransition = ({
       }}
     >
       <motion.div
-        className="sticky top-0 h-screen w-full z-1"
-        style={{ scale: topScale, opacity: topOpacity }}
+        className="sticky top-0 h-screen w-full z-1 transform-gpu"
+        style={{ scale: topScale, opacity: topOpacity, willChange: "transform, opacity" }}
       >
         {topSection}
       </motion.div>
 
       <motion.div
         ref={bottomRef}
-        className="absolute top-0 left-0 w-full z-2"
-        style={{ y: bottomY }}
+        className="absolute top-0 left-0 w-full z-2 transform-gpu"
+        style={{ y: bottomY, willChange: "transform" }}
       >
         {bottomSection}
       </motion.div>
