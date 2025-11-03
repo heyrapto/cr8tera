@@ -32,7 +32,7 @@ const WhyChooseUsSection = () => {
         />
       </div>
 
-      <div className="absolute inset-0 flex items-center justify-center -z-10 pb-[250px]">
+      <div className="absolute inset-0 flex items-center justify-center -z-10 pb-[230px]">
         <div className="animate-spin-slow will-change-transform">
           <Image
             src="/images/whychoose.svg"

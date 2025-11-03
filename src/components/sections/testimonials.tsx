@@ -26,14 +26,6 @@ const TestimonialsSection = () => {
             </div>
 
             <div className="flex flex-col gap-8">
-                {/* Top ruler */}
-                <Image
-                    src="/images/ctaRuler.svg"
-                    alt="Ruler"
-                    width={300}
-                    height={60}
-                    className="mx-auto"
-                />
                 <InfiniteScroll speed={30} direction="left" className=" py-4">
                     {["Ready to connect?", "Say Hello", "Contact Us", "Ready to connect?", "Say Hello", "Ready to connect?", "Say Hello", "Contact Us", "Ready to connect?", "Say Hello", "Ready to connect?", "Say Hello", "Contact Us", "Ready to connect?", "Say Hello", "Ready to connect?", "Say Hello", "Contact Us", "Ready to connect?", "Say Hello"].map((text, i) => (
                         <div key={i} className="flex items-center gap-6 px-6">
