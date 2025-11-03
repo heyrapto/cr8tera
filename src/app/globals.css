@@ -53,7 +53,6 @@
   transition: transform 0.8s ease;
 }
 
-/* 🔥 Only cards with has-back class will flip */
 .flip-card.has-back:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
@@ -70,4 +69,17 @@
 
 .flip-card-back {
   transform: rotateY(180deg);
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+.animate-spin-slow {
+  animation: spin-slow 15s linear infinite;
+  transform-style: preserve-3d;
 }

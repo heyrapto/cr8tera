@@ -107,3 +107,16 @@ export     const footerLinks = [
         href: "/",
     },
 ]
+
+export const chooseData = [
+    {
+      id: 1,
+      title: "Get the exposure you deserve",
+      text: "Harness the power of AI-Powered workflow automation for your marketing, creative & business projects.",
+    },
+    {
+      id: 2,
+      title: "Build smarter, not harder",
+      text: "Use next-gen AI systems to accelerate your creative process and make better decisions faster.",
+    },
+  ];

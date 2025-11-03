@@ -2,21 +2,9 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { chooseData } from "@/constants";
 
 const WhyChooseUsSection = () => {
-  const chooseData = [
-    {
-      id: 1,
-      title: "Get the exposure you deserve",
-      text: "Harness the power of AI-Powered workflow automation for your marketing, creative & business projects.",
-    },
-    {
-      id: 2,
-      title: "Build smarter, not harder",
-      text: "Use next-gen AI systems to accelerate your creative process and make better decisions faster.",
-    },
-  ];
-
   const cardVariants: any = {
     hidden: { scale: 0.8, opacity: 0, y: 40 },
     visible: (i: number) => ({
@@ -44,7 +32,6 @@ const WhyChooseUsSection = () => {
         />
       </div>
 
-      {/* Rotating logo (CSS animation instead of JS) */}
       <div className="absolute inset-0 flex items-center justify-center -z-10 pb-[250px]">
         <div className="animate-spin-slow will-change-transform">
           <Image
@@ -104,22 +91,6 @@ const WhyChooseUsSection = () => {
           </motion.div>
         ))}
       </div>
-
-      {/* CSS keyframes */}
-      <style jsx global>{`
-        @keyframes spin-slow {
-          from {
-            transform: rotateY(0deg);
-          }
-          to {
-            transform: rotateY(360deg);
-          }
-        }
-        .animate-spin-slow {
-          animation: spin-slow 15s linear infinite;
-          transform-style: preserve-3d;
-        }
-      `}</style>
     </section>
   );
 };

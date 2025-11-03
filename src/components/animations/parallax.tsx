@@ -61,7 +61,6 @@ const ParallaxTransition = ({
         marginBottom: viewportHeight > 0 ? `-${viewportHeight}px` : 0
       }}
     >
-      {/* Top Section */}
       <motion.div
         className="sticky top-0 h-screen w-full z-1"
         style={{ scale: topScale, opacity: topOpacity }}
@@ -69,7 +68,6 @@ const ParallaxTransition = ({
         {topSection}
       </motion.div>
 
-      {/* Bottom Section */}
       <motion.div
         ref={bottomRef}
         className="absolute top-0 left-0 w-full z-2"
